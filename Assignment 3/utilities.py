@@ -19,6 +19,17 @@ def nodes_generator(df):
     pos=nx.get_node_attributes(G,'pos')
     return G,pos
 
+def edges_generator(G,df):
+    
+
+    for i in range(1,len(df)):
+        a = df[0][i-1]
+        b = df[0][i]
+        G.add_edge(a, b)
+
+    return G
+
+
 def graph_plotter(G,pos,name,size):
 
     color_map = ['red' if node == 1 else '#00b4d9' for node in G] 
