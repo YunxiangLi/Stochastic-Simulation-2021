@@ -9,10 +9,10 @@ sns.set_theme()
 
 def nodes_generator(df):
     G = nx.Graph()  
-    for i in range(1,len(df)+1):
+    for i in range(1,len(df.T)+1):
         j = [i]
-        x = df[1][i]
-        y = df[2][i]
+        x = df[i][1]
+        y = df[i][2]
         coord = (x,y)
         G.add_nodes_from(j,  pos = coord)
         del j
@@ -22,9 +22,9 @@ def nodes_generator(df):
 def edges_generator(G,df):
     
 
-    for i in range(1,len(df)):
-        a = df[0][i-1]
-        b = df[0][i]
+    for i in range(1,len(df.T)):
+        a = df[i-1][0]
+        b = df[i][0]
         G.add_edge(a, b)
 
     return G
